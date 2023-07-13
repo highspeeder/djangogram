@@ -1,0 +1,33 @@
+{% load static %}
+
+<div class="post">
+    {% for post in posts %}
+    <div class="post_header">
+        <div class="post_headerAuthor">
+            <img
+                src="https://images.unsplash.com/photo-1688530324360-33002e7f9736?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+                alt="Avatar" class="avatar">
+            &nbsp&nbsp&nbsp{{post.user}} •&nbsp<span>{{post.timestamp}}</span>
+        </div>
+        <span class="material-icons-outlined post_headermore">
+            more_horiz
+        </span>
+    </div>
+    <div class="post_image">
+        <img src="{{post.postImage}}" alt>
+    </div>
+    <div class="post_footer">
+        <div class="post_footerIcons">
+            <div class="post_iconsMain">
+                <span class="material-icons-outlined postIcon">favorite_border</span>
+                <span class="material-icons-round postIcon">chat_bubble_outline</span>
+                <span class="material-icons-outlined postIcon">send</span>
+            </div>
+            <div class="post_iconsSave">
+                <span class="material-icons-outlined postIcon_bookmark">bookmark_border</span>
+            </div>
+        </div>
+        춘식이 외 {{post.likes}}명이 좋아합니다.
+    </div>
+    {% endfor %}
+</div>
