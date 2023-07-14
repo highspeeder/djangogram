@@ -1,12 +1,28 @@
 .homepage{
+    padding: 0px;
+    margin: 0px;
     display: flex;
     flex-direction: row;
 }
 
+@media (min-width: 1920px){
+    .homepage_nav {
+        width: 335px !important;
+    }
+}
+
+@media (min-width: 1264px) and (max-width: 1919px){
+    .homepage_nav {
+        width: 244px !important;
+    }
+}
+
 .homepage_nav{
-    flex: 0.2;
+    width: 72px;
+    border-right: solid 1px gainsboro;
+    padding: 8px 12px 20px;
 }
 
 .homepage_timeline{
-    flex: 0.8;
+    width: 80%;
 }

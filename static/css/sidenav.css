@@ -1,11 +1,9 @@
 .sidenav{
     position: fixed;
-    display: flex;
     flex-direction: column;
     justify-content: space-between;
     z-index: 1;
 }
-
 .sidenav_logo{
     width: 103px;
     margin: 32px 25px 30px 16px;
