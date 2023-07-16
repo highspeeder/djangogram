@@ -1,7 +1,28 @@
 {% load static %}
 
 <div class="suggestions">
-    <div class="suggestions_title">회원님을 위한 추천</div>
+    <div class="suggestion_profile">
+        <div class="suggestion_profile_left">
+            <span>
+                <img
+                    src="https://images.unsplash.com/photo-1688530324360-33002e7f9736?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+                    alt="Avatar" class="suggestion_profile_avatar">
+            </span>
+            <div class="suggestion_profile_info">
+                <span class="suggestion_profile_username">dummy</span>
+                <span class="suggestion_profile_relation">홍길동</span>
+            </div>
+        </div>
+        <button class="follow_button">전환</button>
+    </div>
+    <div style="display: flex; flex-direction: row; justify-content: space-between;">
+        <div class="suggestions_title">
+            회원님을 위한 추천
+        </div>
+        <div>
+            <a class="suggestions_title_link" href="#">모두보기</a>
+        </div>
+    </div>
     <div class="suggestions_usernames">
         <div class="suggestion_username">
             <div class="username_left">
@@ -12,7 +33,7 @@
                 </span>
                 <div class="username_info">
                     <span class="username">john</span>
-                    <span class="relation">New to Instagram</span>
+                    <span class="relation">회원님을 위한 추천</span>
                 </div>
             </div>
             <button class="follow_button">팔로우</button>
@@ -27,7 +48,7 @@
                 </span>
                 <div class="username_info">
                     <span class="username">phillip</span>
-                    <span class="relation">New to Instagram</span>
+                    <span class="relation">회원님을 위한 추천</span>
                 </div>
             </div>
             <button class="follow_button">팔로우</button>
@@ -42,7 +63,7 @@
                 </span>
                 <div class="username_info">
                     <span class="username">andy</span>
-                    <span class="relation">New to Instagram</span>
+                    <span class="relation">회원님을 위한 추천</span>
                 </div>
             </div>
             <button class="follow_button">팔로우</button>
@@ -57,10 +78,18 @@
                 </span>
                 <div class="username_info">
                     <span class="username">anna</span>
-                    <span class="relation">New to Instagram</span>
+                    <span class="relation">회원님을 위한 추천</span>
                 </div>
             </div>
             <button class="follow_button">팔로우</button>
         </div>
     </div>
+    <div class="brand_info" style="margin-top: 40px;">소개
+        . 도움말 . 홍보센터 .
+        API
+        . 채용 정보</div>
+    <div class="brand_info">개인정보처리방침 . 약관 . 위치 . 언어 . Meta
+        Verified</div>
+    <br>
+    <div class="brand_info">@2023 INSTAGRAM FROM META</div>
 </div>

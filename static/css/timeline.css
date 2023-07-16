@@ -1,12 +1,36 @@
 .timeline{
     display: flex;
-    flex-direction: row;
+    flex-flow: row nowrap;
+    padding-top: 4px !important;
+    margin: 0 278.5px;
+    align-items: stretch;
+    position: relative;
+    vertical-align: baseline;
+    width: 100%;
+    max-width: calc( 630px + 63px + 319px );
+    border: 0;
+    box-sizing: border-box;
+    padding: 0;
 }
-
 .timeline_left{
-    flex: 0.7;
+    display: block;
+    flex-shrink: 0;
+    width: 100%;
+    float: left;
+    margin-right: 64px;
+    max-width: 630px;
+    margin-left: 40px
 }
 
 .timeline_right{
-    flex: 0.3;
+    position: sticky;
+    padding-top: 30px;
+    height: 100vh;
+    margin-bottom: 30px;
+    padding: 0;
+    top: 0;
+    flex-shrink: 0;
+    max-width: 319px;
+    right: 0;
+    width: 100%;
 }

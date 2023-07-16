@@ -6,7 +6,7 @@
   }
 
 .post{
-  width: 468px;
+  width: 470px;
   margin: 30px 40px 50px 40px;
 }
 
@@ -16,6 +16,7 @@
   flex-direction: row;
   align-items: center;
   margin-bottom: 10px;
+  padding: 20px 0px 0px 0px;
 }
 
 .post_headerAuthor{
@@ -44,7 +45,12 @@
 }
 
 .post_footer{
-
+  padding: 0px 0px 20px 0px;
+  border-bottom: 1px solid gainsboro;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .post_footerIcons{
@@ -66,4 +72,97 @@
 
 .postIcon_bookmark{
   font-size: 25px !important;
+}
+
+.post_commant{
+  border: 0;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  flex-shrink: 1;
+  font: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.post_commant_button{
+  order: 3;
+  justify-content: center;
+  background-color: transparent;
+  touch-action: manipulation;
+  margin-top: 0;
+  border-right-style: none;
+  border-left: 0;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-bottom-style: none;
+  margin-left: 0;
+  border-top-style: none;
+  border-right: 0;
+  text-align: inherit;
+  margin-right: 0;
+  list-style: none;
+  text-decoration: none;
+  outline: none;
+  border-bottom: 0;
+  border-top: 0;
+  padding-left: 0;
+  padding-top: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+}
+
+.post_commant_button_icon{
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  text-align: inherit;
+  list-style: none;
+  text-decoration: none;
+}
+
+.post_commant_textarea{
+  height: 18px;
+  border-left: none;
+  border-right: none;
+  background-color: rgb(255, 255, 255);
+  resize: none;
+  width: 0;
+  max-height: 80px;
+  padding-left: 0;
+  padding-top: 0;
+  display: flex;
+  color: rgb(0, 0, 0);
+  padding-right: 0;
+  font-size: 14px;
+  flex-grow: 1;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  padding-bottom: 0;
+  outline: none;
+  border-top: none;
+  border-bottom: none;
+  line-height: 18px;
+  max-width: 100%;
+  border-radius: 0;
+  margin: 0;
+  writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  -webkit-rtl-ordering: logical;
+  cursor: text;
+  overflow-wrap: break-word;
+  column-count: initial !important;
+  overflow: hidden;
+  box-sizing: border-box;
+  text-align: start;
 }
