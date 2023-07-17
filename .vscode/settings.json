@@ -2,5 +2,14 @@
     "[python]": {
         "editor.defaultFormatter": "ms-python.autopep8"
     },
-    "python.formatting.provider": "none"
+    "python.formatting.provider": "none",
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "${workspaceFolder:djangogram}/db.sqlite3",
+            "name": "admin"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
 }

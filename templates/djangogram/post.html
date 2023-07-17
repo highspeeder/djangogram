@@ -1,20 +1,20 @@
 {% load static %}
 
 <div class="post">
-    {% for post in posts %}
+    {% for feed in feeds %}
     <div class="post_header">
         <div class="post_headerAuthor">
             <img
-                src="https://images.unsplash.com/photo-1688530324360-33002e7f9736?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80"
+                src="{{feed.profile_image}}"
                 alt="Avatar" class="post_avatar">
-            &nbsp&nbsp&nbsp{{post.user}} •&nbsp<span>{{post.timestamp}}</span>
+            &nbsp&nbsp&nbsp{{feed.user_id}} •&nbsp<span>1일</span>
         </div>
         <span class="material-icons-outlined post_headermore">
             more_horiz
         </span>
     </div>
     <div class="post_image">
-        <img src="{{post.postImage}}" alt>
+        <img src="{{feed.image}}" alt>
     </div>
     <div class="post_footer">
         <div class="post_footerIcons">
@@ -28,8 +28,12 @@
             </div>
         </div>
         <p style="margin: 0px 0px 10px 0px; font-size: 14px;"><b>춘식이</b>님 <b>외
-                {{post.likes}}명</b>이
+                {{feed.like_count}}명</b>이
             좋아합니다.</p>
+        {% if feed.content != null %}
+        <p style="margin: 0px 0px 5px 0px; font-size: 14px;"><b>{{feed.user_id}}</b>&nbsp;
+            {{feed.content}}</p>
+        {% endif %}
         <p style="margin: 0px 0px 5px 0px; font-size: 14px;"><b>nice88</b>&nbsp; 멋지다~</p>
         <p style="margin: 0px 0px 5px 0px; font-size: 14px;"><b>apple56</b>&nbsp; 나도 가고
             싶다</p>
