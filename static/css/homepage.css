@@ -1,8 +1,8 @@
-.homepage{
-    padding: 0px;
+.homepage{  
     margin: 0px;
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 
 @media (min-width: 1920px){
@@ -13,15 +13,17 @@
 
 @media (min-width: 1264px) and (max-width: 1919px){
     .homepage_nav {
-        width: 244px !important;
+        width: 220px !important;
     }
 }
 
 .homepage_nav{
+    padding: 8px 12px 20px;
     width: 72px;
     border-right: solid 1px gainsboro;
+    box-sizing: border-box;
 }
 
 .homepage_timeline{
-    width: 80%;
+    flex: 1;
 }
