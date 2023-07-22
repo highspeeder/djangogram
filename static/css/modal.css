@@ -15,8 +15,9 @@
 .modal_close_button{
     color: white;
     cursor: pointer;
-    margin: 10px;
-    align-self: last baseline;
+    position: absolute;
+    left: calc(100% - 40px);
+    top: 10px;
 }
 
 .modal_window{
@@ -46,12 +47,13 @@
     text-shadow: none;
 }
 
-.modal_image_upload{
+.first_modal_content{
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: transparent;
 }
 .modal_image_upload_text{
     margin: 10px 0px;
@@ -81,4 +83,156 @@
     background-color: rgb(0, 149, 246);
     border: none;
     text-shadow: none;
+}
+
+.second_modal_overlay{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+    background: rgba(0, 0, 0, 0.65);
+    flex-direction: column;
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+}
+
+.second_modal_title{
+    padding: 10px 10px 10px 10px;
+    color: 0, 0, 0;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    font-family: Helvetica, Arial, sans-serif;
+    border-bottom: 1px solid gainsboro;
+    text-align: center;
+    text-shadow: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.second_modal_content{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.second_share_image{
+    width: 700px;
+}
+
+.second_share_write{
+    flex: 1;
+    border-left: 1px solid gainsboro;
+}
+
+.second_model_share_button{
+    color: rgb(0, 149, 246);
+    background-color: transparent; 
+    font-weight: 600; 
+    font-size: .875rem; 
+    border:none;
+}
+
+.second_model_share_button:hover{
+    color: rgb(0, 55, 107);
+}
+
+
+.second_modal_window{
+    background: white;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    height: 80%;
+    width: 1040px;
+    max-height: calc(100vh - 40px);
+    top: 50%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    animation: mymove 0.5s;
+}
+
+
+@keyframes mymove {
+    0% {
+        transform: scaleX(0.7);
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+.second_modal_text_form_container{
+    pointer-events: all;
+    font: inherit;
+    font-size: 100%;
+    position: relative;
+    align-items: center;
+    display: flex;
+    width: 100%;
+}
+
+.second_modal_text_form{
+    pointer-events: all;
+    font: inherit;
+    -webkit-user-modify: read-write;
+    overflow-wrap: break-word;
+    margin-right: 0;
+    tab-size: 1;
+    margin-left: 0;
+    position: relative;
+    overflow-y: auto;
+    padding-right: 16px;
+    padding-left: 16px;
+    max-height: 168px;
+    line-height: 20px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 0;
+    margin-top: 0;
+    min-height: 168px;
+    width: 100%;
+    font-size: 16px;
+    overflow-x: auto;
+    user-select: text;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.second_modal_text_form_input{
+    pointer-events: all;
+    font: inherit;
+    tab-size: 1;
+    line-height: 20px;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    user-select: text;
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.second_modal_text_form_placeholder{
+    font: inherit;
+    outline: none;
+    position: absolute;
+    margin-right: 0;
+    margin-left: 0;
+    padding-right: 16px;
+    padding-left: 16px;
+    max-height: 168px;
+    pointer-events: none;
+    line-height: 20px;
+    margin-bottom: 0;
+    color: rgb(199, 199, 199);
+    margin-top: 0;
+    min-height: 168px;
+    width: 100%;
+    font-size: 16px;
 }
