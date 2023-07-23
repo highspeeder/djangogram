@@ -4,9 +4,7 @@
     {% for feed in feeds %}
     <div class="post_header">
         <div class="post_headerAuthor">
-            <img
-                src="{{feed.profile_image}}"
-                alt="Avatar" class="post_avatar">
+            <img src="{{feed.profile_image}}" alt="Avatar" class="post_avatar">
             &nbsp&nbsp&nbsp{{feed.user_id}} •&nbsp<span>1일</span>
         </div>
         <span class="material-icons-outlined post_headermore">
@@ -14,7 +12,7 @@
         </span>
     </div>
     <div class="post_image">
-        <img src="{{feed.image}}" alt>
+        <img src="{% get_media_prefix %}{{feed.image}}" alt>
     </div>
     <div class="post_footer">
         <div class="post_footerIcons">
@@ -42,12 +40,10 @@
         <form class="post_commant">
             <div class="post_commant_button" role="button" tabindex="0">
                 <div class="post_commant_button_icon">
-                    <span class="material-icons-outlined"
-                        style="color: gray; font-size: 15px;">sentiment_satisfied_alt</span>
+                    <span class="material-icons-outlined" style="color: gray; font-size: 15px;">sentiment_satisfied_alt</span>
                 </div>
             </div>
-            <textarea aria-label="댓글 달기..." placeholder="댓글 달기..."
-                autocomplete="off" class="post_commant_textarea"></textarea>
+            <textarea aria-label="댓글 달기..." placeholder="댓글 달기..." autocomplete="off" class="post_commant_textarea"></textarea>
         </form>
     </div>
     {% endfor %}
