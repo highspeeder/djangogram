@@ -1,1 +1,29 @@
-<div class="login">login</div>
+{% extends "../user/join_base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="login">
+    <img src="{% static 'image/logo.svg' %}">
+    <div class="form-floating mb-1">
+        <input class="form-control" type="email" id="email" placeholder="전화번호, 사용자 이름 또는 이메일" />
+        <label for="email">전화번호, 사용자 이름 또는 이메일</label>
+    </div>
+    <div class="form-floating mb-1">
+        <input class="form-control" type="password" id="password" placeholder="비밀번호" />
+        <label for="password">비밀번호</label>
+    </div>
+    <button class="login_button">로그인</button>
+    <div style="display: flex; flex-direction: row; justify-content: center; margin: 10px 0px;">
+        <div style="height: 1px; position: relative; flex-grow: 1; background-color: gainsboro; top: .5em;"></div>
+        <div style="margin-right: 18px; margin-left: 18px; box-sizing: border-box; font-weight: 600; font-size: .8125rem; color: rgb(115, 115, 115)">
+            또는
+        </div>
+        <div style="height: 1px; position: relative; flex-grow: 1; background-color: gainsboro; top: .5em;"></div>
+    </div>
+    <button class="facebook_login_button">
+        <img src="{% static 'image/facebook_blue.png' %}" alt="">
+        Facebook으로 로그인
+    </button>
+    <button class="find_password">비밀번호를 잊으셨나요?</span>
+</div>
+{% endblock %}

@@ -1,1 +1,37 @@
-<div class="signup">Singup</div>
+{% extends "../user/join_base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="singup">
+    <img src="{% static 'image/logo.svg' %}">
+    <span>친구들의 사진과 동영상을 보려면 가입하세요.</span>
+    <button><img src="{% static 'image/facebook_white.png' %}" alt="" style="width: 17px; border-radius: 1px; margin-right: 7px; text-align: center;">Facebook으로 로그인</button>
+    <div style="display: flex; flex-direction: row; justify-content: center; margin: 20px 0px;">
+        <div style="height: 1px; position: relative; flex-grow: 1; background-color: gainsboro; top: .5em;"></div>
+        <div style="margin-right: 18px; margin-left: 18px; box-sizing: border-box; font-weight: 600; font-size: .8125rem; color: rgb(115, 115, 115)">
+            또는
+        </div>
+        <div style="height: 1px; position: relative; flex-grow: 1; background-color: gainsboro; top: .5em;"></div>
+    </div>
+    <div class="form-floating mb-1">
+        <input class="form-control" type="email" id="email" placeholder="휴대폰 번호 또는 이메일 주소" />
+        <label for="email">휴대폰 번호 또는 이메일 주소</label>
+    </div>
+    <div class="form-floating mb-1">
+        <input class="form-control" type="text" id="name" placeholder="성명" />
+        <label for="name">성명</label>
+    </div>
+    <div class="form-floating mb-1">
+        <input class="form-control" type="text" id="nickname" placeholder="사용자 이름" />
+        <label for="nickname">사용자 이름</label>
+    </div>
+    <div class="form-floating mb-1">
+        <input class="form-control" type="password" id="password" placeholder="비밀번호" />
+        <label for="password">비밀번호</label>
+    </div>
+    <span style="font-weight: 400; font-size: 12px; color: rgb(115, 115, 115); margin: 10px 0px;">
+        저희 서비스를 이용하는 사람이 회원님의 연락처 정보를 Instagram에 업로드했을 수도 있습니다. 더 알아보기
+    </span>
+    <button>가입</button>
+</div>
+{% endblock %}

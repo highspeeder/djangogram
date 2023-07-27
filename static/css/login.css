@@ -1,0 +1,79 @@
+.login{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gainsboro;
+    padding: 40px 40px 20px 40px;
+}
+
+.login > img {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    width: 175px;
+    height: 51px;
+}
+
+.login_button{
+    padding: 7px;
+    border-radius: 8px;
+    border: 0;
+    color: white;
+    background-color: rgb(0, 149, 246);
+    font-weight: 600;
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin-top: 10px;
+}
+
+.facebook_login_button{
+    padding: 7px;
+    border-radius: 8px;
+    border: 0;
+    color: #385185;
+    background-color: white;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.facebook_login_button > img{
+    flex-shrink: 0;
+    width: 17px; 
+    border-radius: 1px; 
+    margin-right: 7px; 
+}
+
+.login > button:hover{
+    cursor: pointer;
+}
+
+.login > button:disabled{
+    opacity: .7;
+    cursor: default;
+    background-color: rgb(0, 149, 246);
+}
+
+.login > span{
+    color: rgb(115, 115, 115);
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 20px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.find_password{
+    color: rgb(0, 55, 107) !important;
+    font-size: 12px !important;
+    line-height: 16px !important;
+    margin-top: 12px !important;
+    text-align: center !important;
+    font-weight: normal !important;
+    background-color: transparent;
+    outline: 0;
+    border: 0;
+}
