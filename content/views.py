@@ -5,13 +5,28 @@ from .models import Feed
 from djangogram.settings import MEDIA_ROOT
 import os
 from uuid import uuid4
+from user.models import User
 
 
-# Create your views here.
 class Main(APIView):
     def get(self, request):
         feed_list = Feed.objects.all().order_by('-id')
-        return render(request, 'djangogram/main.html', context={'feeds': feed_list})
+
+        logined_email = request.session['email']
+        print('로그인한 사용자 =', logined_email)
+
+        if logined_email is None:
+            return render(request, 'user/login.html')
+
+        user = User.objects.filter(email=logined_email).first()
+
+        if user is None:
+            return render(request, 'user/login.html')
+
+        return render(request, 'djangogram/main.html', context={
+            'feeds': feed_list,
+            'user': user
+        })
 
 
 class UploadFeed(APIView):

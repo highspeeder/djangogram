@@ -37,3 +37,56 @@ function fadeOutImage(idx, images) {
         $(images[idx]).fadeOut(2000);
     });
 }
+
+$('#singup_button').click(function () {
+    let email = $('#input_email').val();
+    let name = $('#input_name').val();
+    let nickname = $('#input_nickname').val();
+    let password = $('#input_password').val();
+
+    $.ajax({
+        url: '/user/signup/',
+        data: {
+            email: email,
+            name: name,
+            nickname: nickname,
+            password: password,
+        },
+        method: 'POST',
+        success: function (data) {
+            console.log('성공');
+            alert('회원가입에 성공했습니다. 로그인해주세요.')
+            location.replace('/user/login')
+        },
+        error: function (request, status, error) {
+            console.log('에러 -' + 'status: ' + status + ', error: ' + error);
+        },
+        complete: function () {
+            console.log('완료');
+        }
+    })
+});
+
+$('#login_button').click(function () {
+    let email = $('#input_email').val();
+    let password = $('#input_password').val();
+
+    $.ajax({
+        url: '/user/login/',
+        data: {
+            email: email,
+            password: password,
+        },
+        method: 'POST',
+        success: function (data) {
+            console.log('성공');
+            location.replace('/main')
+        },
+        error: function (request, status, error) {
+            console.log('에러');
+        },
+        complete: function () {
+            console.log('완료');
+        }
+    })
+});
