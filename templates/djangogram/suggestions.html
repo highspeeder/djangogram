@@ -4,7 +4,11 @@
     <div class="suggestion_profile">
         <div class="suggestion_profile_left">
             <span>
-                <img src="https://images.unsplash.com/photo-1688530324360-33002e7f9736?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Avatar" class="suggestion_profile_avatar">
+                {% if "default_profile.png" in user.profile_image %}
+                <img src="{% static 'image/default_profile.png' %}" alt="Avatar" class="suggestion_profile_avatar">
+                {% else %}
+                <img src="{% get_media_prefix %}{{ user.profile_image }}" alt="Avatar" class="suggestion_profile_avatar">
+                {% endif %}
             </span>
             <div class="suggestion_profile_info">
                 <span class="suggestion_profile_username">{{ user.nickname }}</span>

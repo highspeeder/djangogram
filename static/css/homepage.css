@@ -13,15 +13,12 @@
 
 @media (min-width: 1264px) and (max-width: 1919px){
     .homepage_nav {
-        width: 220px !important;
+        width: 244px !important;
     }
 }
 
 .homepage_nav{
-    padding: 8px 12px 20px;
     width: 72px;
-    border-right: solid 1px gainsboro;
-    box-sizing: border-box;
 }
 
 .homepage_timeline{

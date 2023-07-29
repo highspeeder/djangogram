@@ -1,17 +1,20 @@
 .sidenav{
     flex-direction: column;
-    justify-content: space-between;
-    z-index: 1;
     display: flex;
+    box-sizing: border-box;
+    padding: 8px 12px 20px 12px;
+    height: inherit;
+    border-right: solid 1px gainsboro;
 }
 .sidenav_logo{
     width: 103px;
-    margin: 32px 25px 30px 16px;
+    margin: 32px 25px 30px 12px;
 }
 
 .sidenav_buttons{
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
 }
 
 .sidenav_button{
@@ -21,7 +24,7 @@
     background: 0;
     border: 0;
     margin: 4px 10px 4px 0px;
-    padding: 10px 15px 10px 15px;
+    padding: 10px 15px 10px 10px;
     border-radius: 10px;
     width: 100%;
 }
@@ -38,10 +41,74 @@
 .sidenav_menutext{
     font-size: 16px;
     margin-left: 12px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-.sidenav_more{
-    position: fixed;
-    bottom: 20px;
+.sidenav_profile{
+    width: 28px;
+}
+
+.dropdown-menu.show {
+    border: 0 !important;
+    width: 266px !important;;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,.15)) !important;
+    border-radius: 15px !important;
+    padding: 8px !important;
+}
+
+.sidenav_more_button{
+    display:  flex;
+    flex-direction: row;
+    align-items: center;
+    background: 0;
+    border: 0;
+    margin: 4px 10px 4px 0px;
+    padding: 10px 15px 10px 10px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.sidenav_more_button.show > span{
+    font-weight: 800 !important;
+}
+
+.sidenav_more_menu_button{
+    padding: 16px !important;
+    border-radius: 8px !important;
+    line-height: 18px !important;
+    vertical-align: top !important;
+}
+
+.sidenav_more_menu_button:hover{
+    background: rgba(0, 0, 0, 0.05) !important;
+}
+
+.sidenav_more_menu_button_text{
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+.sidenav_more_menu_button_icon{
+    font-size: 18px !important;
+    vertical-align: middle !important;
+    margin-right: 5px !important;
+}
+
+.sidenav_dropdown_divider_large{
+    margin-top: 8px;
+    margin-left: -8px;
+    margin-right: -8px;
+    margin-bottom: 8px;
+    background-color: rgba(219, 219, 219, .3);
+    height: 6px;
+}
+
+.sidenav_dropdown_divider_small{
+    margin-top: 8px;
+    margin-left: -8px;
+    margin-right: -8px;
+    margin-bottom: 8px;
+    background-color: rgba(219, 219, 219, .5);
+    height: .5px;
 }
