@@ -56,7 +56,7 @@ $('#singup_button').click(function () {
         success: function (data) {
             console.log('성공');
             alert('회원가입에 성공했습니다. 로그인해주세요.')
-            location.replace('/user/login')
+            location.replace('/user/login/')
         },
         error: function (request, status, error) {
             console.log('에러 -' + 'status: ' + status + ', error: ' + error);

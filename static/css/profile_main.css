@@ -1,0 +1,31 @@
+.profile_main{  
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+@media (min-width: 1920px){
+    .profile_main_nav {
+        width: 335px !important;
+    }
+}
+
+@media (min-width: 1264px) and (max-width: 1919px){
+    .profile_main_nav {
+        width: 244px !important;
+    }
+}
+
+.profile_main_nav{
+    width: 72px;
+}
+
+.profile_content{
+    flex: 1;
+    min-height: 100vh;
+    padding: 30px 20px 0;
+    margin: 0 auto 30px;
+    max-width: 935px;
+    box-sizing: content-box;
+}

@@ -1,8 +1,11 @@
+import os
+from uuid import uuid4
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import User
 from django.contrib.auth.hashers import make_password
+from djangogram.settings import MEDIA_ROOT
 
 is_singup = False
 
@@ -47,3 +50,34 @@ class Login(APIView):
             return Response(status=200)
         else:
             return Response(status=404, data=dict(message='회원정보가 잘못되었습니다.'))
+
+
+class Logout(APIView):
+    def get(self, request):
+        request.session.flush()
+        is_singup = False
+        return render(request, "user/login.html", {'is_singup': is_singup})
+
+
+class UploadProfile(APIView):
+    def post(self, request):
+        # media에 이미지 저장
+        file = request.FILES['file']
+        email = request.POST['email']
+
+        uuid_name = uuid4().hex
+        save_path = os.path.join(MEDIA_ROOT, uuid_name)
+
+        with open(save_path, 'wb+') as destination:
+            for chunk in file.chunks():
+                destination.write(chunk)
+
+        print("이미지저장됨." + uuid_name)
+
+        profile_image = uuid_name
+
+        user = User.objects.filter(email=email).first()
+        user.profile_image = profile_image
+        user.save()
+
+        return Response(status=200)

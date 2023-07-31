@@ -12,7 +12,8 @@ class Main(APIView):
     def get(self, request):
         feed_list = Feed.objects.all().order_by('-id')
 
-        logined_email = request.session['email']
+        logined_email = request.session.get('email', None)
+
         print('로그인한 사용자 =', logined_email)
 
         if logined_email is None:
@@ -23,7 +24,7 @@ class Main(APIView):
         if user is None:
             return render(request, 'user/login.html')
 
-        return render(request, 'djangogram/main.html', context={
+        return render(request, 'content/main.html', context={
             'feeds': feed_list,
             'user': user
         })
@@ -50,3 +51,25 @@ class UploadFeed(APIView):
                             user_id=user_id, profile_image=profile_image, like_count=0)
 
         return Response(status=200)
+
+
+class Profile(APIView):
+    def get(self, request):
+        feed_list = Feed.objects.all().order_by('-id')
+
+        logined_email = request.session.get('email', None)
+
+        print('로그인한 사용자 =', logined_email)
+
+        if logined_email is None:
+            return render(request, 'user/login.html')
+
+        user = User.objects.filter(email=logined_email).first()
+
+        if user is None:
+            return render(request, 'user/login.html')
+
+        return render(request, 'content/profile_main.html', context={
+            'feeds': feed_list,
+            'user': user
+        })

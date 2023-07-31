@@ -1,0 +1,49 @@
+{% load static %}
+
+<div class="profile_content_header">
+    <div class="profile_content_header_left">
+        {% if "default_profile.png" in user.profile_image %}
+        <img src="{% static 'image/default_profile.png' %}" alt="Avatar">
+        {% else %}
+        <img src="{% get_media_prefix %}{{ user.profile_image }}" alt="Avatar">
+        {% endif %}
+    </div>
+    <div class="profile_content_header_right">
+        <div class="firstline">
+            <div class="nickname">
+                {{ user.nickname }}
+            </div>
+            <div class="buttons">
+                <button id="button_profile_upload">
+                    프로필 편집
+                </button>
+                <input type="file" id="input_profile_upload" onchange="profile_upload()" style="display: none;">
+                <button style="margin-left: 8px;">
+                    보관된 스토리 보기
+                </button>
+            </div>
+            <div class="icon">
+                <span class="material-icons-round">settings</span>
+            </div>
+        </div>
+        <div class="secondline">
+        </div>
+        <div class="thirdline">
+            <div class="post_count">
+                게시물
+                <span class="profile_content_header_right_count_span">348</span>
+            </div>
+            <div class="follower_count">
+                팔로워
+                <span class="profile_content_header_right_count_span">111</span>
+            </div>
+            <div class="following_count">
+                팔로잉
+                <span class="profile_content_header_right_count_span">312</span>
+            </div>
+        </div>
+        <div class="fourthline">
+            john
+        </div>
+    </div>
+</div>

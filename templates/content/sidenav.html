@@ -1,0 +1,86 @@
+{% load static %}
+<div style="position: fixed; width: inherit; height: 100vh;">
+    <div class="sidenav">
+        <a href="/main">
+            <img class="sidenav_logo" src="{% static 'image/logo.svg' %}">
+        </a>
+        <div class="sidenav_buttons">
+            <button class="sidenav_button" onclick="location.href='/main'">
+                <span class="sidenav_icon material-icons-round">home</span>
+                <span class="sidenav_menutext">홈</span>
+            </button>
+            <button class="sidenav_button">
+                <span class="sidenav_icon material-icons-round">search</span>
+                <span class="sidenav_menutext">검색</span>
+            </button>
+            <button class="sidenav_button">
+                <span class="sidenav_icon material-icons-outlined">explore</span>
+                <span class="sidenav_menutext">탐색 탭</span>
+            </button>
+            <button class="sidenav_button">
+                <span class="material-icons-outlined sidenav_icon">slideshow</span>
+                <span class="sidenav_menutext">릴스</span>
+            </button>
+            <button class="sidenav_button">
+                <span class="material-icons sidenav_icon">send</span>
+                <span class="sidenav_menutext">메시지</span>
+            </button>
+            <button class="sidenav_button">
+                <div class="material-icons-round sidenav_icon">favorite_border</div>
+                <span class="sidenav_menutext">알림</span>
+            </button>
+            <button id="sidenav_addbox_button" class="sidenav_button">
+                <div class="material-icons-outlined sidenav_icon">add_box</div>
+                <span class="sidenav_menutext">만들기</span>
+            </button>
+            <button id="sidenav_profile_button" class="sidenav_button" onclick="location.href='/content/profile/'">
+                {% if "default_profile.png" in user.profile_image %}
+                <img src="{% static 'image/default_profile.png' %}" alt="Avatar" class="sidenav_profile">
+                {% else %}
+                <img src="{% get_media_prefix %}{{ user.profile_image }}" alt="Avatar" class="sidenav_profile">
+                {% endif %}
+                <span class="sidenav_menutext">프로필</span>
+            </button>
+        </div>
+        <div class="btn-group dropup">
+            <button type="button" class="sidenav_more_button" data-bs-toggle="dropdown">
+                <span class="material-icons-outlined sidenav_icon">menu</span>
+                <span class="sidenav_menutext">더 보기</span>
+            </button>
+            <ul class="dropdown-menu sidenav_more_menu">
+                <a class="dropdown-item sidenav_more_menu_button" href="#">
+                    <span class="material-icons-round sidenav_more_menu_button_icon">settings</span>
+                    <span class="sidenav_more_menu_button_text">설정</span>
+                </a>
+                <a class="dropdown-item sidenav_more_menu_button" href="#">
+                    <span class="material-icons-round sidenav_more_menu_button_icon align-middle">history_toggle_off</span>
+                    <span class="align-middle sidenav_more_menu_button_text">내 활동</span>
+                </a>
+                <a class="dropdown-item sidenav_more_menu_button" href="#">
+                    <span class="material-icons-outlined sidenav_more_menu_button_icon align-middle">bookmark_border</span>
+                    <span class="align-middle sidenav_more_menu_button_text">저장됨</span>
+                </a>
+                <a class="dropdown-item sidenav_more_menu_button" href="#">
+                    <span class="material-icons-outlined sidenav_more_menu_button_icon align-middle">wb_sunny</span>
+                    <span class="align-middle sidenav_more_menu_button_text">모드 전환</span>
+                </a>
+                <a class="dropdown-item sidenav_more_menu_button" href="#">
+                    <span class="material-icons-outlined sidenav_more_menu_button_icon align-middle">feedback</span>
+                    <span class="align-middle sidenav_more_menu_button_text">문제 신고</span>
+                </a>
+                <div class="sidenav_dropdown_divider_large"></div>
+                <li>
+                    <a class="dropdown-item sidenav_more_menu_button" href="#">
+                        <span class="sidenav_more_menu_button_text">계정 전환</span>
+                    </a>
+                </li>
+                <div class="sidenav_dropdown_divider_small"></div>
+                <li>
+                    <a class="dropdown-item sidenav_more_menu_button" href="/user/logout">
+                        <span class="sidenav_more_menu_button_text">로그 아웃</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

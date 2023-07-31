@@ -1,3 +1,9 @@
+:root{
+    --nav-wide-width : 335px;
+    --nav-medium-width: 244px;
+    --nav-narrow-width: 72px;
+}
+
 .homepage{  
     margin: 0px;
     display: flex;
@@ -7,13 +13,13 @@
 
 @media (min-width: 1920px){
     .homepage_nav {
-        width: 335px !important;
+        width: var(--nav-wide-width) !important;
     }
 }
 
 @media (min-width: 1264px) and (max-width: 1919px){
     .homepage_nav {
-        width: 244px !important;
+        width: var(--nav-medium-width) !important;
     }
 }
 

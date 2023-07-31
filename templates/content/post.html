@@ -4,7 +4,7 @@
     {% for feed in feeds %}
     <div class="post_header">
         <div class="post_headerAuthor">
-            <img src="{{feed.profile_image}}" alt="Avatar" class="post_avatar">
+            <img src="{% get_media_prefix %}{{feed.profile_image}}" alt="Avatar" class="post_avatar">
             &nbsp&nbsp&nbsp{{feed.user_id}} •&nbsp<span>1일</span>
         </div>
         <span class="material-icons-outlined post_headermore">
