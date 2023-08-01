@@ -10,6 +10,34 @@ function updateCounter(el) {
     };
 };
 
+$("textarea.post_comment_textarea").on('keydown keyup', function () {
+    $(this).height(1).height($(this).prop('scrollHeight'));
+
+    let scrollHeight = $(this).prop('scrollHeight');
+
+    if (scrollHeight < 90) {
+        $(this).css({
+            "overflow-y": "hidden",
+        });
+    }
+    else {
+        $(this).css({
+            "overflow-y": "visible",
+        });
+    }
+
+    if ($(this).val().length > 0) {
+        $(this).next().css({
+            "display": "inline-block",
+        })
+    }
+    else {
+        $(this).next().css({
+            "display": "None",
+        })
+    }
+});
+
 function second_modal_back() {
     $('#first_modal').css({ "display": "flex" });
     $('#second_modal').css({ "display": "none" });
@@ -103,15 +131,11 @@ $('#feed_share_button').click(function () {
     let file = files[0];
     let image = files[0].name;
     let content = $('#share_textbox').val();
-    let user_id = JSON.parse(document.getElementById('user_nickname').textContent);
-    let profile_image = JSON.parse(document.getElementById('user_profile_image').textContent);
 
     let formdata = new FormData();
     formdata.append('file', file);
     formdata.append('image', image);
     formdata.append('content', content);
-    formdata.append('user_id', user_id);
-    formdata.append('profile_image', profile_image);
 
     $.ajax({
         url: '/content/upload/',
@@ -204,3 +228,39 @@ function feed_upload() {
         return;
     }
 }
+
+$('.feed_reply_submit_button').click(function (e) {
+    let feed_id = e.target.attributes.getNamedItem("feed_id").value;
+    let currentuser_nickname = JSON.parse(document.getElementById('user_nickname').textContent);
+    let reply_id = 'reply_' + feed_id;
+    let reply_content = $('#' + reply_id).val();
+
+    if (reply_content.length <= 0) {
+        return;
+    }
+
+    $.ajax({
+        url: '/content/reply/',
+        data: {
+            feed_id: feed_id,
+            reply_content: reply_content,
+        },
+        method: 'POST',
+        success: function (data) {
+            console.log('성공');
+            //페이지 전체를 refresh하지 않고, 댓글부분만 refresh한다.
+            //location.replace('/main')
+            $('#reply_list_' + feed_id).append(
+                "<p><b>" + currentuser_nickname + "</b>&nbsp; " + reply_content + "</p>"
+            );
+        },
+        error: function (request, status, error) {
+            console.log('에러');
+        },
+        complete: function () {
+            console.log('완료');
+            $('#' + reply_id).val('');
+        }
+    })
+
+});

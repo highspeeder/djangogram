@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import Feed
+from .models import Feed, Reply, Like
 from djangogram.settings import MEDIA_ROOT
 import os
 from uuid import uuid4
@@ -13,24 +13,35 @@ class Main(APIView):
         feed_object_list = Feed.objects.all().order_by('-id')
 
         logined_email = request.session.get('email', None)
-        user = User.objects.filter(email=logined_email).first()
-
         print('로그인한 사용자 =', logined_email)
 
         if logined_email is None:
             return render(request, 'user/login.html')
 
-        if user is None:
-            return render(request, 'user/login.html')
-
         feed_list = []
-
         for feed in feed_object_list:
-            feed_list.append(dict(image=feed.image,
+            reply_list = []
+            user = User.objects.filter(email=logined_email).first()
+
+            if user is None:
+                return render(request, 'user/login.html')
+
+            feed_reply_object_list = Reply.objects.filter(feed_id=feed.id)
+
+            for reply in feed_reply_object_list:
+                commented_user = User.objects.filter(email=reply.email).first()
+
+                reply_list.append(dict(reply_content=reply.reply_content,
+                                       nickname=commented_user.nickname
+                                       ))
+
+            feed_list.append(dict(id=feed.id,
+                                  image=feed.image,
                                   content=feed.content,
                                   like_count=feed.like_count,
                                   profile_image=user.profile_image,
                                   nickname=user.nickname,
+                                  reply_list=reply_list,
                                   ))
 
         return render(request, 'content/main.html', context={
@@ -78,3 +89,15 @@ class Profile(APIView):
         return render(request, 'content/profile_main.html', context={
             'user': user
         })
+
+
+class UploadReply(APIView):
+    def post(self, request):
+        feed_id = request.POST.get('feed_id', None)
+        reply_content = request.POST.get('reply_content', None)
+        email = request.session.get('email', None)
+
+        Reply.objects.create(
+            feed_id=feed_id, reply_content=reply_content, email=email)
+
+        return Response(status=200)

@@ -1,5 +1,7 @@
 {% load static %}
 
+{{ user.nickname|json_script:"user_nickname" }}
+
 <div class="post">
     {% for feed in feeds %}
     <div class="post_header">
@@ -32,19 +34,20 @@
         <p style="margin: 0px 0px 5px 0px; font-size: 14px;"><b>{{feed.nickname}}</b>&nbsp;
             {{feed.content}}</p>
         {% endif %}
-        <p style="margin: 0px 0px 5px 0px; font-size: 14px;"><b>nice88</b>&nbsp; 멋지다~</p>
-        <p style="margin: 0px 0px 5px 0px; font-size: 14px;"><b>apple56</b>&nbsp; 나도 가고
-            싶다</p>
-        <p style="margin: 0px 0px 5px 0px; font-size: 14px;"><b>steel954</b>&nbsp; 여기
-            어디임?</p>
-        <form class="post_commant">
-            <div class="post_commant_button" role="button" tabindex="0">
+        <div id="reply_list_{{ feed.id }}" class="reply_list">
+            {% for reply in feed.reply_list %}
+            <p><b>{{ reply.nickname }}</b>&nbsp; {{ reply.reply_content }}</p>
+            {% endfor %}
+        </div>
+        <div class="post_comment">
+            <div class="post_comment_button" role="button" tabindex="0">
                 <div class="post_commant_button_icon">
                     <span class="material-icons-outlined" style="color: gray; font-size: 15px;">sentiment_satisfied_alt</span>
                 </div>
             </div>
-            <textarea aria-label="댓글 달기..." placeholder="댓글 달기..." autocomplete="off" class="post_commant_textarea"></textarea>
-        </form>
+            <textarea id="reply_{{ feed.id }}" aria-label="댓글 달기..." placeholder="댓글 달기..." autocomplete="off" autocorrect="off" dir class="post_comment_textarea"></textarea>
+            <button feed_id="{{ feed.id }}" class="feed_reply_submit_button">게시</button>
+        </div>
     </div>
     {% endfor %}
 </div>
