@@ -10,19 +10,28 @@ from user.models import User
 
 class Main(APIView):
     def get(self, request):
-        feed_list = Feed.objects.all().order_by('-id')
+        feed_object_list = Feed.objects.all().order_by('-id')
 
         logined_email = request.session.get('email', None)
+        user = User.objects.filter(email=logined_email).first()
 
         print('로그인한 사용자 =', logined_email)
 
         if logined_email is None:
             return render(request, 'user/login.html')
 
-        user = User.objects.filter(email=logined_email).first()
-
         if user is None:
             return render(request, 'user/login.html')
+
+        feed_list = []
+
+        for feed in feed_object_list:
+            feed_list.append(dict(image=feed.image,
+                                  content=feed.content,
+                                  like_count=feed.like_count,
+                                  profile_image=user.profile_image,
+                                  nickname=user.nickname,
+                                  ))
 
         return render(request, 'content/main.html', context={
             'feeds': feed_list,
@@ -44,19 +53,16 @@ class UploadFeed(APIView):
 
         image = uuid_name
         content = request.data.get('content')
-        user_id = request.data.get('user_id')
-        profile_image = request.data.get('profile_image')
+        email = request.session.get('email', None)
 
         Feed.objects.create(image=image, content=content,
-                            user_id=user_id, profile_image=profile_image, like_count=0)
+                            email=email, like_count=0)
 
         return Response(status=200)
 
 
 class Profile(APIView):
     def get(self, request):
-        feed_list = Feed.objects.all().order_by('-id')
-
         logined_email = request.session.get('email', None)
 
         print('로그인한 사용자 =', logined_email)
@@ -70,6 +76,5 @@ class Profile(APIView):
             return render(request, 'user/login.html')
 
         return render(request, 'content/profile_main.html', context={
-            'feeds': feed_list,
             'user': user
         })

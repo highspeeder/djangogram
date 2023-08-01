@@ -5,6 +5,5 @@ from django.db import models
 class Feed(models.Model):
     content = models.TextField()  # 글내용
     image = models.TextField()  # 피드이미지
-    profile_image = models.TextField()  # 프로필이미지
-    user_id = models.TextField()  # 글쓴이
+    email = models.EmailField(default='')  # 이메일
     like_count = models.IntegerField()  # 좋아요 수

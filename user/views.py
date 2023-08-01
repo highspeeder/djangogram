@@ -61,10 +61,16 @@ class Logout(APIView):
 
 class UploadProfile(APIView):
     def post(self, request):
-        # media에 이미지 저장
         file = request.FILES['file']
         email = request.POST['email']
 
+        user = User.objects.filter(email=email).first()
+
+        # 기존 프로필 이미지 삭제
+        delete_file_path = os.path.join(MEDIA_ROOT, user.profile_image)
+        os.remove(delete_file_path)
+
+        # media에 이미지 저장
         uuid_name = uuid4().hex
         save_path = os.path.join(MEDIA_ROOT, uuid_name)
 
@@ -74,10 +80,8 @@ class UploadProfile(APIView):
 
         print("이미지저장됨." + uuid_name)
 
-        profile_image = uuid_name
-
-        user = User.objects.filter(email=email).first()
-        user.profile_image = profile_image
+        # DB에 저장
+        user.profile_image = uuid_name
         user.save()
 
         return Response(status=200)
