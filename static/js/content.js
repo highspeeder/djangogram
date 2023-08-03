@@ -151,7 +151,7 @@ $('#feed_share_button').click(function () {
         },
         complete: function () {
             console.log('완료');
-            location.replace('/main');
+            location.replace('/content/main');
         }
     })
 
@@ -263,4 +263,101 @@ $('.feed_reply_submit_button').click(function (e) {
         }
     })
 
+});
+
+function animateHeart(element) {
+    if ($(element).hasClass("favorite_fill")) {
+        element.animate(
+            [
+                { transform: "scale(1)" },
+                { transform: "scale(1.3)" },
+                { transform: "scale(1)" }
+            ],
+            {
+                duration: 300,
+                easing: "ease"
+            }
+        );
+    }
+}
+
+$(function () {
+    // 즉시 실행 함수 구문 사용
+    //느낌표 2개는 형변환하여 boolean으로 표현
+    $('.favorite').each(function () {
+        var isLiked = !!$(this).data('liked');
+        $(this).toggleClass('favorite_border', !isLiked).toggleClass('favorite_fill', isLiked);
+    });
+
+    $('.bookmark').each(function () {
+        var ismarked = !!$(this).data('marked');
+        $(this).toggleClass('bookmark_border', !ismarked).toggleClass('bookmark_fill', ismarked);
+    });
+});
+
+$(".favorite").click(function (e) {
+    if ($(this).hasClass("favorite_fill")) {
+        $(this).html("favorite_border");
+        $(this).toggleClass("favorite_fill favorite_border");
+    } else {
+        $(this).html("favorite");
+        $(this).toggleClass("favorite_fill favorite_border");
+        animateHeart(this);
+    }
+
+    let feed_id = e.target.attributes.getNamedItem('feed_id').value;
+    let favorite_id = e.target.id;
+    let favorite_text = $.trim($('#' + favorite_id).html());
+
+    $.ajax({
+        url: '/content/like/',
+        data: {
+            feed_id: feed_id,
+            favorite_text: favorite_text,
+        },
+        method: 'POST',
+        dataType: 'json',
+        success: function (data) {
+            $('#p_like_count_' + feed_id).html('<b>춘식이</b>님 <b>외' + data.like_count + '명</b>이 좋아합니다.');
+            console.log('성공')
+        },
+        error: function (request, status, error) {
+            console.log('에러');
+        },
+        complete: function () {
+            console.log('완료');
+        }
+    })
+});
+
+$(".bookmark").click(function (e) {
+    if ($(this).hasClass("bookmark_fill")) {
+        $(this).html("bookmark_border");
+        $(this).toggleClass("bookmark_fill bookmark_border");
+    } else {
+        $(this).html("bookmark");
+        $(this).toggleClass("bookmark_fill bookmark_border");
+    }
+
+    let feed_id = e.target.attributes.getNamedItem('feed_id').value;
+    let bookmark_id = e.target.id;
+    let bookmark_text = $.trim($('#' + bookmark_id).html());
+
+    $.ajax({
+        url: '/content/bookmark/',
+        data: {
+            feed_id: feed_id,
+            bookmark_text: bookmark_text,
+        },
+        method: 'POST',
+        success: function (data) {
+            console.log('성공')
+        },
+        error: function (request, status, error) {
+            console.log('에러');
+        },
+        complete: function () {
+            console.log('완료');
+        }
+    })
 });

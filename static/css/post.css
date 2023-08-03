@@ -188,3 +188,39 @@
   margin: 0px 0px 5px 0px; 
   font-size: 14px;
 }
+
+.favorite {
+  cursor: pointer;
+}
+.favorite:hover {
+  color: gray;
+}
+.favorite_border {
+  color: black;
+}
+.favorite_fill {
+  color: red !important;
+}
+
+.post_iconsMain{
+  -ms-user-select: none; 
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.bookmark {
+  cursor: pointer;
+}
+
+.bookmark:hover {
+  color: gray;
+}
+
+.bookmark_border {
+  color: black;
+}
+.bookmark_fill {
+  color: black !important;
+}

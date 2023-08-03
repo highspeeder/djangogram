@@ -1,6 +1,7 @@
 {% load static %}
 
 {{ user.nickname|json_script:"user_nickname" }}
+{{ feed.like_count|json_script:"feed_like_count" }}
 
 <div class="post">
     {% for feed in feeds %}
@@ -19,17 +20,19 @@
     <div class="post_footer">
         <div class="post_footerIcons">
             <div class="post_iconsMain">
-                <span class="material-icons-outlined postIcon">favorite_border</span>
+                <span id="favorite_{{ feed.id }}" feed_id="{{ feed.id }}" class="favorite material-icons-outlined postIcon" data-liked="{% if feed.is_liked %}1{% else %}0{% endif %}">
+                    {% if feed.is_liked %}favorite{% else %}favorite_border{% endif %}
+                </span>
                 <span class="material-icons-round postIcon">chat_bubble_outline</span>
                 <span class="material-icons-outlined postIcon">send</span>
             </div>
             <div class="post_iconsSave">
-                <span class="material-icons-outlined postIcon_bookmark">bookmark_border</span>
+                <span id="bookmark_{{ feed.id }}" feed_id="{{ feed.id }}" class="bookmark material-icons-outlined postIcon_bookmark" data-marked="{% if feed.is_marked %}1{% else %}0{% endif %}">
+                    {% if feed.is_marked %}bookmark{% else %}bookmark_border{% endif %}
+                </span>
             </div>
         </div>
-        <p style="margin: 0px 0px 10px 0px; font-size: 14px;"><b>춘식이</b>님 <b>외
-                {{feed.like_count}}명</b>이
-            좋아합니다.</p>
+        <p id="p_like_count_{{ feed.id }}" style="margin: 0px 0px 10px 0px; font-size: 14px;"><b>춘식이</b>님 <b>외{{feed.like_count}}명</b>이 좋아합니다.</p>
         {% if feed.content != null %}
         <p style="margin: 0px 0px 5px 0px; font-size: 14px;"><b>{{feed.nickname}}</b>&nbsp;
             {{feed.content}}</p>

@@ -1,4 +1,4 @@
-$(function () {
+$(document).ready(function () {
     $('#s1').css('display', 'block');
     fadeplay();
 });
@@ -80,7 +80,7 @@ $('#login_button').click(function () {
         method: 'POST',
         success: function (data) {
             console.log('성공');
-            location.replace('/main')
+            location.replace('/content/main')
         },
         error: function (request, status, error) {
             console.log('에러');
