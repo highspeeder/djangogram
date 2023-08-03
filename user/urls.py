@@ -1,5 +1,7 @@
 from django.urls import path
 from .views import Login, Signup, Logout, UploadProfile
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('login/', Login.as_view()),

@@ -47,3 +47,35 @@
         </div>
     </div>
 </div>
+<div class="profile_content_nav">
+    <div id="button_feed_list">
+        <span class="material-icons-outlined">
+            grid_on
+        </span>
+        <span>게시물</span>
+    </div>
+    <div id="button_feed_bookmark_list">
+        <span class="material-icons-outlined">
+            bookmark_border
+        </span>
+        <span>저장됨</span>
+    </div>
+</div>
+<div id="feed_list" style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;">
+    {% for feed in feed_list %}
+    <div>
+        <div class="post_image">
+            <img style="width: 306px; height: 306px; margin: 2px; object-fit: cover;" src="{% get_media_prefix %}{{feed.image}}" alt>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div id="bookmark_feed_list" style="display: none; flex-direction: row; flex-wrap: wrap; justify-content: center;">
+    {% for bookmark_feed in bookmark_feed_list %}
+    <div>
+        <div class="post_image">
+            <img style="width: 306px; height: 306px; margin: 2px; object-fit: cover;" src="{% get_media_prefix %}{{bookmark_feed.image}}" alt>
+        </div>
+    </div>
+    {% endfor %}
+</div>

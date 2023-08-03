@@ -78,8 +78,7 @@ class UploadFeed(APIView):
 
         Feed.objects.create(image=uuid_name,
                             content=request.data.get('content'),
-                            email=request.session.get('email', None),
-                            like_count=0)
+                            email=request.session.get('email', None))
 
         return Response(status=200)
 
@@ -96,8 +95,15 @@ class Profile(APIView):
         if user is None:
             return render(request, 'user/login.html')
 
+        feed_list = Feed.objects.filter(email=logined_email)
+        bookmark_list = list(Bookmark.objects.filter(
+            email=logined_email, is_marked=True).values_list('feed_id', flat=True))
+        bookmark_feed_list = Feed.objects.filter(id__in=bookmark_list)
+
         return render(request, 'content/profile_main.html', context={
-            'user': user
+            'user': user,
+            'feed_list': feed_list,
+            'bookmark_feed_list': bookmark_feed_list,
         })
 
 

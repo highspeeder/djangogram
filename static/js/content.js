@@ -293,6 +293,12 @@ $(function () {
         var ismarked = !!$(this).data('marked');
         $(this).toggleClass('bookmark_border', !ismarked).toggleClass('bookmark_fill', ismarked);
     });
+
+    $('#button_feed_list').css({
+        'border-top': '1px solid rgb(0,0,0)',
+        'color': 'rgb(0,0,0)',
+        'margin-top': '-1px',
+    });
 });
 
 $(".favorite").click(function (e) {
@@ -360,4 +366,47 @@ $(".bookmark").click(function (e) {
             console.log('완료');
         }
     })
+});
+
+
+$('#button_feed_list').click(function () {
+    $('#feed_list').css({
+        display: 'flex'
+    });
+    $('#bookmark_feed_list').css({
+        display: 'none'
+    });
+
+    $(this).css({
+        'border-top': '1px solid rgb(0,0,0)',
+        'color': 'rgb(0,0,0)',
+        'margin-top': '-1px',
+    });
+
+    $('#button_feed_bookmark_list').css({
+        'border-top': 'none',
+        'color': 'rgb(115,115,115)',
+        'margin-top': '0',
+    });
+});
+
+$('#button_feed_bookmark_list').click(function () {
+    $('#feed_list').css({
+        display: 'none'
+    });
+    $('#bookmark_feed_list').css({
+        display: 'flex'
+    });
+
+    $(this).css({
+        'border-top': '1px solid rgb(0,0,0)',
+        'color': 'rgb(0,0,0)',
+        'margin-top': '-1px',
+    });
+
+    $('#button_feed_list').css({
+        'border-top': 'none',
+        'color': 'rgb(115,115,115)',
+        'margin-top': '0',
+    });
 });
