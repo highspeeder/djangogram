@@ -2,3 +2,4 @@
 djangogram/__pycache__/
 *.py[cod]
 media/
+db.sqlite3
