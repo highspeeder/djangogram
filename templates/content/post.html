@@ -32,7 +32,12 @@
                 </span>
             </div>
         </div>
-        <p id="p_like_count_{{ feed.id }}" style="margin: 0px 0px 10px 0px; font-size: 14px;"><b>춘식이</b>님 <b>외{{feed.like_count}}명</b>이 좋아합니다.</p>
+        {% if feed.like_count == 0 %}
+        <p id="p_like_count_{{ feed.id }}" style="margin: 0px 0px 10px 0px; font-size: 14px; font-weight: 600; display: none;"></p>
+        {% else %}
+        <p id="p_like_count_{{ feed.id }}" style="margin: 0px 0px 10px 0px; font-size: 14px; font-weight: 600;">좋아요 {{feed.like_count}}개</p>
+        {% endif %}
+
         {% if feed.content != null %}
         <p style="margin: 0px 0px 5px 0px; font-size: 14px;"><b>{{feed.nickname}}</b>&nbsp;
             {{feed.content}}</p>

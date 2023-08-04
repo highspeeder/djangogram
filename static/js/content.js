@@ -324,7 +324,17 @@ $(".favorite").click(function (e) {
         method: 'POST',
         dataType: 'json',
         success: function (data) {
-            $('#p_like_count_' + feed_id).html('<b>춘식이</b>님 <b>외' + data.like_count + '명</b>이 좋아합니다.');
+            if (data.like_count <= 0) {
+                $('#p_like_count_' + feed_id).css({
+                    display: 'none'
+                });
+            } else {
+                $('#p_like_count_' + feed_id).css({
+                    display: 'block'
+                });
+                $('#p_like_count_' + feed_id).html('좋아요 ' + data.like_count + '개');
+            }
+
             console.log('성공')
         },
         error: function (request, status, error) {
