@@ -10,8 +10,9 @@ from user.models import User
 
 class Main(APIView):
     def get(self, request):
-        feed_object_list = Feed.objects.all().order_by('-id')
         logined_email = request.session.get('email', None)
+        feed_object_list = Feed.objects.filter(
+            email=logined_email).order_by('-id')
 
         if logined_email is None:
             return render(request, 'user/login.html')
