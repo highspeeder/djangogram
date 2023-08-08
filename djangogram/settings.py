@@ -153,19 +153,10 @@ LOGGING = {
         },
     },
     'loggers': {
-        'django': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-        },
         # 추가: 애플리케이션 로거도 동일한 설정으로 변경
         'user': {
             'handlers': ['console'],
-            'level': 'DEBUG',
-        },
-        # 추가: 애플리케이션 로거도 동일한 설정으로 변경
-        'content': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
+            'level': 'INFO',
         },
     },
 }
