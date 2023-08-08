@@ -136,3 +136,5 @@ PROFILE_MEDIA_URL = 'content/profile/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTH_USER_MODEL = 'user.User'
+
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
