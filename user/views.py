@@ -69,8 +69,8 @@ class UploadProfile(APIView):
         user = User.objects.filter(email=email).first()
 
         # 기존 프로필 이미지 삭제
-        logger.debug('기존 프로필 이미지 경로 : ' + delete_file_path)
         delete_file_path = os.path.join(MEDIA_ROOT, user.profile_image)
+        logger.debug('기존 프로필 이미지 경로 : ' + delete_file_path)
         os.remove(delete_file_path)
 
         # media에 이미지 저장
