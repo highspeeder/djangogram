@@ -71,7 +71,8 @@ class UploadProfile(APIView):
         # 기존 프로필 이미지 삭제
         delete_file_path = os.path.join(MEDIA_ROOT, user.profile_image)
         logger.debug('기존 프로필 이미지 경로 : ' + delete_file_path)
-        os.remove(delete_file_path)
+        if delete_file_path not in 'default_profile.png':
+            os.remove(delete_file_path)
 
         # media에 이미지 저장
         uuid_name = uuid4().hex
