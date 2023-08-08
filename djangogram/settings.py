@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import mimetypes
 from pathlib import Path
 import os
 
@@ -138,3 +139,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 AUTH_USER_MODEL = 'user.User'
 
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+
+mimetypes.add_type("text/css", ".css", True)
