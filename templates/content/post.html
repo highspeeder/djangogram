@@ -7,7 +7,11 @@
     {% for feed in feeds %}
     <div class="post_header">
         <div class="post_headerAuthor">
+            {% if "default_profile.png" in user.profile_image %}
+            <img src="{% static 'image/default_profile.png' %}" alt="Avatar" class="post_avatar">
+            {% else %}
             <img src="{% get_media_prefix %}{{feed.profile_image}}" alt="Avatar" class="post_avatar">
+            {% endif %}
             &nbsp&nbsp&nbsp{{feed.nickname}} •&nbsp<span>1일</span>
         </div>
         <span class="material-icons-outlined post_headermore">

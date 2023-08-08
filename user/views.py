@@ -6,10 +6,8 @@ from rest_framework.response import Response
 from .models import User
 from django.contrib.auth.hashers import make_password
 from djangogram.settings import MEDIA_ROOT
-import logging
 
 is_singup = False
-logger = logging.getLogger(__name__)
 
 
 class Signup(APIView):
@@ -70,7 +68,7 @@ class UploadProfile(APIView):
 
         # 기존 프로필 이미지 삭제
         delete_file_path = os.path.join(MEDIA_ROOT, user.profile_image)
-        logger.info('기존 프로필 이미지 경로 : ' + delete_file_path)
+        print('기존 프로필 이미지 경로 : ' + delete_file_path)
         if 'default_profile.png' not in delete_file_path:
             os.remove(delete_file_path)
 
