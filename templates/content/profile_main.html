@@ -70,7 +70,13 @@
                     <div style="display: flex; flex-direction: column;">
                         <div style="display: flex; flex-direction: row; padding: 10px;">
                             <span>
-                                <img src="{% get_media_prefix %}{{ user.profile_image }}" alt="Avatar" style="width: 30px; height: 30px; border-radius: 50%;"></span>
+                                {% if "default_profile.png" in user.profile_image %}
+                                <img src="{% static 'image/default_profile.png' %}" alt="" alt="Avatar" style="width: 30px; height: 30px; border-radius: 50%;">
+                                {% else %}
+                                <img src="{% get_media_prefix %}{{ user.profile_image }}" alt="Avatar" style="width: 30px; height: 30px; border-radius: 50%;">
+                                {% endif %}
+
+                            </span>
                             <span class="suggestion_profile_username" style="margin-left: 10px; line-height:25px;">{{ user.nickname }}</span>
                         </div>
                         <textarea id="share_textbox" oninput="updateCounter(this)" style="width: 100%; height: 200px; border: none; outline: none; resize: none;" placeholder="문구 입력..." maxlength="2200"></textarea>
