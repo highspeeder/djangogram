@@ -105,7 +105,7 @@ class Profile(APIView):
             'user': user,
             'feed_list': feed_list,
             'bookmark_feed_list': bookmark_feed_list,
-        })
+        }, status=200)
 
 
 class UploadReply(APIView):

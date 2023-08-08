@@ -11,8 +11,6 @@ urlpatterns = [
     path('user/', include('user.urls')),
 ]
 
-urlpatterns += static(settings.MEDIA_URL,
-                      document_root=settings.MEDIA_ROOT)
-
-urlpatterns += static(settings.PROFILE_MEDIA_URL,
-                      document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
