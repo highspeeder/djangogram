@@ -84,7 +84,7 @@ $('#login_button').click(function () {
             location.replace('/content/main')
         },
         error: function (xhr, status, error) {
-            var response = xhr.responseJSON;
+            var response = JSON.parse(xhr.responseText);
             console.log('에러');
             alert(response.message);
         },
