@@ -78,7 +78,6 @@ $('#login_button').click(function () {
             password: password,
         },
         method: 'POST',
-        dataType: "json",
         success: function (data) {
             console.log('성공');
             location.replace('/content/main')
