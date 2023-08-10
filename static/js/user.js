@@ -84,9 +84,9 @@ $('#login_button').click(function () {
             location.replace('/content/main')
         },
         error: function (xhr, status, error) {
-            var response = JSON.parse(xhr.responseText);
+            //var response = JSON.parse(xhr.responseText);
             console.log('에러');
-            alert(response.message);
+            alert(xhr.status + ": " + xhr.statusText);
         },
         complete: function () {
             console.log('완료');
