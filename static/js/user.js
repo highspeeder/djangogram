@@ -78,12 +78,15 @@ $('#login_button').click(function () {
             password: password,
         },
         method: 'POST',
+        dataType: "json",
         success: function (data) {
             console.log('성공');
             location.replace('/content/main')
         },
-        error: function (request, status, error) {
+        error: function (xhr, status, error) {
+            var response = xhr.responseJSON;
             console.log('에러');
+            alert(response.message);
         },
         complete: function () {
             console.log('완료');

@@ -42,14 +42,14 @@ class Login(APIView):
         user = User.objects.filter(email=email).first()
 
         if user is None:
-            return Response(status=404, data=dict(message='회원정보가 잘못되었습니다.'))
+            return Response({"message": '회원정보가 잘못되었습니다.'}, status=404)
 
         if user.check_password(password):
             # 세션 or 쿠키에 정보를 넣는다.
             request.session['email'] = email
             return Response(status=200)
         else:
-            return Response(status=404, data=dict(message='회원정보가 잘못되었습니다.'))
+            return Response({"message": '회원정보가 잘못되었습니다.'}, status=404)
 
 
 class Logout(APIView):
