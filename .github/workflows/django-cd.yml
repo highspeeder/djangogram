@@ -20,7 +20,8 @@ jobs:
           key: ${{ secrets.KEY }}
           port: 22
           script: |
-            cd /home/ubuntu/djangogram
+            cd ~/compose-server/djangogram/django/source
             git pull
-            sudo systemctl restart uwsgi
+            docker-compose down
+            docker-compose up --build
             
