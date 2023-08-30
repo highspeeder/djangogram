@@ -1,4 +1,4 @@
-.myenv/
+myenv/
 djangogram/__pycache__/
 *.py[cod]
 media/
