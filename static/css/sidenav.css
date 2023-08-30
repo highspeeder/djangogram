@@ -11,6 +11,11 @@
     margin: 32px 25px 30px 12px;
 }
 
+.sidenav_cam{
+    width: 25px;
+    margin: 32px 25px 30px 12px;
+}
+
 .sidenav_buttons{
     display: flex;
     flex-direction: column;

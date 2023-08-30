@@ -420,3 +420,16 @@ $('#button_feed_bookmark_list').click(function () {
         'margin-top': '0',
     });
 });
+
+function getWidth() {
+    let width = window.innerWidth;
+    if (width <= 1263) {
+      document.getElementById('cam-img').style.display = 'block';
+      document.getElementById('logo-img').style.display = 'none';
+    } else {
+      document.getElementById('cam-img').style.display = 'none';
+      document.getElementById('logo-img').style.display = 'block';
+    }
+  }
+  window.addEventListener('resize',getWidth);
+  getWidth();

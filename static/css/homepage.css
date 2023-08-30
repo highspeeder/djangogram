@@ -23,6 +23,16 @@
     }
 }
 
+@media (max-width: 1263px){
+    .sidenav_menutext{
+        display: none;
+    }
+
+    .homepage_timeline{
+        display: none;
+    }
+}
+
 .homepage_nav{
     width: 72px;
 }
