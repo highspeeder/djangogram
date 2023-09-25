@@ -2,20 +2,21 @@
     margin: 0;
     padding: 0;
     background-size: 468.32px 634.15px;
-    height: 581.15px;
+    height: 600.15px;
     margin-bottom: 12px;
     background-image: url("/static/image/home-phones.png");
-    background-position: -46px 0;
     align-self: center;
-    flex-basis: 380.32px;
+    flex-basis: 500.32px;
     margin-right: 32px;
 }
 .slideshow-image{
-    border-radius:3%;
-    width: 250px;
-    height: 538.84px;
+    border-radius:10px;
+    width: 205px;
+    height: 553px;
     position: absolute;
     display: none;
+    top: 13px;
+    left: 110px;
 }
 .mySlides {
     padding-left: 0;
